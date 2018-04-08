@@ -27,12 +27,18 @@ def index():
 @app.route('/blog', methods=['GET','POST'])
 def blogs():
     
-    blogs = Blog.query.all()
+    individual_blog_page = False
+    id = request.args.get('id')
+    
+    if id == None :
+        blogs = Blog.query.order_by(Blog.id.desc()).all()
 
-   # blogs = [["Blog 1","title 1"], ["Blog 2","title 2"]]
+    else:
+        blogs = Blog.query.filter_by(id = id).all()
+        individual_blog_page = True
     
     
-    return render_template("blog.html", blogs = blogs)
+    return render_template("blog.html", blogs = blogs, individual_blog_page = individual_blog_page)
 
 
 @app.route('/newpost', methods=['GET','POST'])
@@ -57,7 +63,7 @@ def newpost():
         db.session.add(new_blog)
         db.session.commit()
 
-        return redirect('/blog')
+        return redirect('/blog?id='+str(new_blog.id))
     else:
         return render_template("new_post.html")
 

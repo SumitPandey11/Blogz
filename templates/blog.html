@@ -2,13 +2,28 @@
 
 {% block content %}
 
-<h1>Build  a Blog </h1>
+    {% if not individual_blog_page %}
 
+        <center><h1>Build  a Blog </h1></center>
+        
+    {% endif %}
+    
+    
     {% for blog in blogs %}
 
-        <h2>{{ blog.title }}</h2>
-        <p>{{ blog.body }}</p>
+        {% if individual_blog_page %} 
+            
+            <center><h2> {{ blog.title }}</h2></center>
+            <p>{{ blog.body }}</p>
+           
+        {% else %}
+
+            <h2><a href='/blog?id={{ blog.id }}'> {{ blog.title }}</a> </h2>
+            <p>{{ blog.body }}</p>
+
+        {% endif %}
 
     {% endfor %}
+
 
 {% endblock %}
