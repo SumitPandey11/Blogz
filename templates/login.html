@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Login</h1>
+<p>
+    <h3 class="error">{{error_message}}</h3>
+    <form name="login" action="/login" method="post">
+        <br>Username: <input type="text" name="username">
+        <br>Password : <input type="password" name="user_password">
+        <br><input type="submit" value="Login">
+    </form>
+    <p>Don't have an account? <a href="/signup">Cretae one!</a></p>
+</p>
+
+{% endblock %}

@@ -15,11 +15,12 @@
             
             <center><h2> {{ blog.title }}</h2></center>
             <p>{{ blog.body }}</p>
-           
+            <br><i>written by <a href='/blog?user={{blog.user.id}}'>{{blog.user.username}}</a></i>
         {% else %}
 
             <h2><a href='/blog?id={{ blog.id }}'> {{ blog.title }}</a> </h2>
             <p>{{ blog.body }}</p>
+            <br><i>written by <a href='/blog?user={{blog.user.id}}'>{{blog.user.username}}</a></i>
 
         {% endif %}
 
