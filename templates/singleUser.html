@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container-fluid">
     <h1>Blog posts!</h1>
     {% for blog in blogs %}
+    <div class="well">
         <p><a href="/blog?id={{blog.id}}">{{ blog.title }}</a>
         <p>{{ blog.body }}
-        <p><i>written by <a href='/blog?user={{blog.user.username}}'>{{blog.user.username}}</a></i>
+        <p><i>written by <a href='/blog?user={{blog.user.id}}'>{{blog.user.username}}</a></i>
+    </div>       
       {% endfor %}  
-
+    </div>
 {% endblock %}

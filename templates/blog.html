@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<div class="container-fluid">
     {% if not individual_blog_page %}
 
         <center><h1>Build  a Blog </h1></center>
         
     {% endif %}
     
+   
     
     {% for blog in blogs %}
-
+   <div class="well">
         {% if individual_blog_page %} 
             
             <center><h2> {{ blog.title }}</h2></center>
@@ -23,8 +24,8 @@
             <br><i>written by <a href='/blog?user={{blog.user.id}}'>{{blog.user.username}}</a></i>
 
         {% endif %}
-
+    </div>
     {% endfor %}
-
-
+    
+</div>
 {% endblock %}
